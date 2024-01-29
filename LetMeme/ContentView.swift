@@ -12,14 +12,12 @@ import ColorfulX
 struct ContentView: View {
     @State var imageUrl:URL? = nil
     @State var postUrl:URL? = nil
-    @State var isFetching:Bool = false
-    
     @State var colors: [Color] = ColorfulPreset.lemon.colors
-
+    
     var body: some View {
         ZStack {
             ColorfulView(color: $colors)
-                        .ignoresSafeArea()
+                .ignoresSafeArea()
             VStack {
                 Spacer()
                 MemeImageVIew(imageUrl: $imageUrl)

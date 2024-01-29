@@ -18,6 +18,7 @@
 		B58DA6D92B67D68E005A8DF6 /* MemeImageVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58DA6D82B67D68E005A8DF6 /* MemeImageVIew.swift */; };
 		B58DA6DB2B67EE64005A8DF6 /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58DA6DA2B67EE64005A8DF6 /* GrowingButton.swift */; };
 		B58DA6DE2B680947005A8DF6 /* ColorfulX in Frameworks */ = {isa = PBXBuildFile; productRef = B58DA6DD2B680947005A8DF6 /* ColorfulX */; };
+		B5FC57A22B686EDA00336D9A /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FC57A12B686EDA00336D9A /* UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		B58DA6D52B67D5D1005A8DF6 /* FetchMeme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeme.swift; sourceTree = "<group>"; };
 		B58DA6D82B67D68E005A8DF6 /* MemeImageVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeImageVIew.swift; sourceTree = "<group>"; };
 		B58DA6DA2B67EE64005A8DF6 /* GrowingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButton.swift; sourceTree = "<group>"; };
+		B5FC57A12B686EDA00336D9A /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		B58DA6A72B67CF3A005A8DF6 /* LetMeme */ = {
 			isa = PBXGroup;
 			children = (
+				B5FC57A02B686EC400336D9A /* Extensions */,
 				B58DA6D72B67D686005A8DF6 /* Views */,
 				B58DA6D42B67D5B9005A8DF6 /* Functions */,
 				B58DA6D22B67D331005A8DF6 /* ButtonStyle */,
@@ -160,6 +163,14 @@
 				B58DA6D82B67D68E005A8DF6 /* MemeImageVIew.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B5FC57A02B686EC400336D9A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5FC57A12B686EDA00336D9A /* UIApplication.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FC57A22B686EDA00336D9A /* UIApplication.swift in Sources */,
 				B58DA6D92B67D68E005A8DF6 /* MemeImageVIew.swift in Sources */,
 				B58DA6D62B67D5D1005A8DF6 /* FetchMeme.swift in Sources */,
 				B58DA6AB2B67CF3A005A8DF6 /* ContentView.swift in Sources */,
@@ -472,8 +484,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -502,8 +514,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

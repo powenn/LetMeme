@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-    // 3
     var firstKeyWindow: UIWindow? {
         return UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }

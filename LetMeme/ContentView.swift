@@ -17,6 +17,18 @@ struct ContentView: View {
     let timer = Timer.publish(every: 8, on: .main, in: .common).autoconnect()
     @State private var showWebView = false
     
+    @State var hasAppeared:Bool = false
+    
+    private func GetMeme(){
+        Task{
+            imageUrl = nil
+            postUrl = nil
+            let data = try await fetchMeme()
+            imageUrl = await fetchMemeUrl(data: data)
+            postUrl  = await fetcPostUrl(data: data)
+        }
+    }
+    
     var body: some View {
         ZStack {
             ColorfulView(color: $colors)
@@ -26,28 +38,27 @@ struct ContentView: View {
                 Spacer()
                 MemeImageVIew(imageUrl: $imageUrl)
                     .aspectRatio(0.9, contentMode: .fit)
+                    .onTapGesture {
+                        if (postUrl != nil) {
+                            let vc = SFSafariViewController(url: postUrl!)
+                            UIApplication.shared.firstKeyWindow?.rootViewController?.present(vc, animated: true)
+                        }
+                    }
                 Spacer()
-                Button(action: {
-                    let vc = SFSafariViewController(url: postUrl ?? URL(string: "https://www.apple.com")!)
-                    
-                    UIApplication.shared.firstKeyWindow?.rootViewController?.present(vc, animated: true)
-                }, label: {
-                    Text("View post")
-                }).disabled(postUrl == nil)
-                
                 Button("Get Meme", action: {
                     Task {
-                        imageUrl = nil
-                        postUrl = nil
-                        let data = try await fetchMeme()
-                        imageUrl = await fetchMemeUrl(data: data)
-                        postUrl  = await fetcPostUrl(data: data)
+                        GetMeme()
                     }
                 }).buttonStyle(GrowingButton())
             }
             .padding()
         }.onReceive(timer, perform: { _ in
             colors = ColorfulPreset.allCases.randomElement()!.colors
+        }).onAppear(perform: {
+            if !hasAppeared {
+                GetMeme()
+                hasAppeared = true
+            }
         })
     }
 }

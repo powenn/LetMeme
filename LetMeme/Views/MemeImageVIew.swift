@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MemeImageVIew:View {
-    @Binding var imageUrl:URL?
+    @Binding var postData:RedditPost?
     var body: some View {
         VStack {
-            AsyncImage(url: imageUrl, transaction: Transaction(animation: .easeInOut)) { phase in
+            AsyncImage(url: postData?.url, transaction: Transaction(animation: .easeInOut)) { phase in
                 switch phase {
                 case .empty:
                     Color.gray.opacity(0.4)

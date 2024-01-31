@@ -10,22 +10,18 @@ import ColorfulX
 import SafariServices
 
 struct ContentView: View {
-    @State var imageUrl:URL? = nil
-    @State var postUrl:URL? = nil
     @State var colors: [Color] = ColorfulPreset.allCases.randomElement()!.colors
     
-    let timer = Timer.publish(every: 8, on: .main, in: .common).autoconnect()
+    @State var postData:RedditPost? = nil
     @State private var showWebView = false
-    
     @State var hasAppeared:Bool = false
+    
+    let timer = Timer.publish(every: 8, on: .main, in: .common).autoconnect()
     
     private func GetMeme(){
         Task{
-            imageUrl = nil
-            postUrl = nil
-            let data = try await fetchMeme()
-            imageUrl = await fetchMemeUrl(data: data)
-            postUrl  = await fetcPostUrl(data: data)
+            postData = nil
+            postData = try await fetchMeme()
         }
     }
     
@@ -36,11 +32,11 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
-                MemeImageVIew(imageUrl: $imageUrl)
+                MemeImageVIew(postData: $postData)
                     .aspectRatio(0.9, contentMode: .fit)
                     .onTapGesture {
-                        if (postUrl != nil) {
-                            let vc = SFSafariViewController(url: postUrl!)
+                        if (postData?.postLink != nil) {
+                            let vc = SFSafariViewController(url: postData!.postLink)
                             UIApplication.shared.firstKeyWindow?.rootViewController?.present(vc, animated: true)
                         }
                     }

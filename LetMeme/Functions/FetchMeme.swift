@@ -19,34 +19,10 @@ struct RedditPost: Decodable {
     let preview: [URL]
 }
 
-func fetchMeme() async throws -> Data {
+func fetchMeme() async throws -> RedditPost {
     let url = URL(string: "https://meme-api.com/gimme")!
     let (data, _) = try await URLSession.shared.data(from: url)
-    return data
-}
-
-func fetchMemeUrl(data:Data) async -> URL? {
-    var memeUrl:URL? = nil
-    do {
-        let data = try await fetchMeme()
-        let redditPost = try JSONDecoder().decode(RedditPost.self, from: data)
-        memeUrl = redditPost.url
-        print(memeUrl != nil ? "Fetched Url : \(memeUrl!)" : "Url Fetch failed")
-    } catch {
-        print("Error: \(error)")
-    }
-    return memeUrl
-}
-
-func fetcPostUrl(data:Data) async -> URL? {
-    var postUrl:URL? = nil
-    do {
-        let data = try await fetchMeme()
-        let redditPost = try JSONDecoder().decode(RedditPost.self, from: data)
-        postUrl = redditPost.postLink
-        print(postUrl != nil ? "Fetched Url : \(postUrl!)" : "Url Fetch failed")
-    } catch {
-        print("Error: \(error)")
-    }
-    return postUrl
+    let redditPost = try JSONDecoder().decode(RedditPost.self, from: data)
+    print("Fetched post link : \(redditPost.postLink) , image url : \(redditPost.url)")
+    return redditPost
 }

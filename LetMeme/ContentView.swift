@@ -13,12 +13,12 @@ struct ContentView: View {
     @State var colors: [Color] = ColorfulPreset.allCases.randomElement()!.colors
     
     @State var postData:RedditPost? = nil
-    @State private var showWebView = false
+    @State var showWebView = false
     @State var hasAppeared:Bool = false
     
     let timer = Timer.publish(every: 8, on: .main, in: .common).autoconnect()
     
-    private func GetMeme(){
+    func GetMeme(){
         Task{
             postData = nil
             postData = try await fetchMeme()
@@ -42,9 +42,7 @@ struct ContentView: View {
                     }
                 Spacer()
                 Button("Get Meme", action: {
-                    Task {
-                        GetMeme()
-                    }
+                    GetMeme()
                 }).buttonStyle(GrowingButton())
             }
             .padding()

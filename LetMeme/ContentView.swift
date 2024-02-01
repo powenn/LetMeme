@@ -18,7 +18,7 @@ struct ContentView: View {
     
     let timer = Timer.publish(every: 8, on: .main, in: .common).autoconnect()
     
-    func GetMeme(){
+    func getMeme(){
         Task{
             postData = nil
             postData = try await fetchMeme()
@@ -42,7 +42,7 @@ struct ContentView: View {
                     }
                 Spacer()
                 Button("Get Meme", action: {
-                    GetMeme()
+                    getMeme()
                 }).buttonStyle(GrowingButton())
             }
             .padding()
@@ -50,7 +50,7 @@ struct ContentView: View {
             colors = ColorfulPreset.allCases.randomElement()!.colors
         }).onAppear(perform: {
             if !hasAppeared {
-                GetMeme()
+                getMeme()
                 hasAppeared = true
             }
         })
